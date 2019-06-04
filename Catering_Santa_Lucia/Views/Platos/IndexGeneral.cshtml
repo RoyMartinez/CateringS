@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Catering_Santa_Lucia.Models.Plato>
+
+@{
+    ViewData["Title"] = "Lista de Platillos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Plato Definidos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.Id == 1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoNavigation.Descripcion)
+                    </td>
+                    <td>
+                        <a class="btn btn-success"  asp-action="DetailsGeneral" asp-route-id="@item.Id">Detalles</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>
+
+
+<h1>Personalizados</h1>
+<p>
+    <a class="btn btn-primary" asp-action="CreateGeneral">Crea un platillo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.Id != 1)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoNavigation.Descripcion)
+                    </td>
+                    <td>
+                        <a class="btn btn-success" asp-action="DetailsGeneral" asp-route-id="@item.Id">Detalles</a>
+                        <a class="btn btn-primary" asp-action="EditGeneral" asp-route-id="@item.Id">Modificar</a>
+                        <a class="btn btn-danger" asp-action="DeleteGeneral" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Catering_Santa_Lucia.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Pedidos</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="CreateGeneral">Realiza un Pedido</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaPedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsuarioNavigation.Nombre)
+            </td>
+            <td>
+                <a class="btn btn-success" asp-action="DetailsGeneral" asp-route-id="@item.Id">Detalles</a> 
+                <a class="btn btn-primary" asp-action="EditGeneral" asp-route-id="@item.Id">Editar</a> 
+                <a class="btn btn-danger" asp-action="DeleteGeneral" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

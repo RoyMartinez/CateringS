@@ -1,0 +1,29 @@
+﻿@model Catering_Santa_Lucia.Models.Menu
+
+@{
+    ViewData["Title"] = "Detalles de menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Detalles del Menu</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoNavigation.Descripcion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="IndexGeneral">Regresar</a>
+</div>

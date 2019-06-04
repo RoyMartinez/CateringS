@@ -1,0 +1,44 @@
+﻿@model Catering_Santa_Lucia.Models.Usuario
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ingreso</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    <link rel="stylesheet" href="~/css/Master.css" />
+</head>
+<body>
+    <div class="login-box">
+        <h1>Ingreso al sistema</h1>
+        <form asp-controller="Config">
+            <!-- USERNAME INPUT -->
+            <label asp-for="Nombre">Usuario</label>
+            <input asp-for="Nombre" type="text" placeholder="Ingresa el usuario">
+            @Html.ValidationMessageFor(x => x.Nombre, null, new { @class = "text-danger" })
+            <!-- PASSWORD INPUT -->
+            <label asp-for="Contraseña">Contraseña</label>
+            <input asp-for="Contraseña" type="password" placeholder="Ingrese la contraseña">
+            @Html.ValidationMessageFor(x => x.Contraseña, null, new { @class = "text-danger" })
+            <input type="submit" value="Ingresar">
+            <br />
+        </form>
+    </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

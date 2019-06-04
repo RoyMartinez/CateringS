@@ -1,0 +1,51 @@
+﻿@model Catering_Santa_Lucia.Models.Pedido
+
+@{
+    ViewData["Title"] = "CreateGeneral";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CreateGeneral</h1>
+
+<h4>Pedido</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateGeneral">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaPedido" class="control-label"></label>
+                <input asp-for="FechaPedido" class="form-control" />
+                <span asp-validation-for="FechaPedido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class ="form-control" asp-items="ViewBag.Tipo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cliente" class="control-label"></label>
+                <select asp-for="Cliente" class ="form-control" asp-items="ViewBag.Cliente"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <select asp-for="Usuario" class ="form-control" asp-items="ViewBag.Usuario"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Realizar pedido" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="IndexGeneral">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
